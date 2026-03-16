@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jean Fabre de Morlhon — 80 ans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --stone:      #f0e9dc;
+      --stone-dark: #d6c9b0;
+      --text:       #2e2720;
+      --text-light: #6b5e50;
+      --gold:       #b8966e;
+      --gold-light: #d4b48a;
+      --green:      #5a6e48;
+      --white:      #faf7f2;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background-color: var(--stone);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── SLIDESHOW HERO ─────────────────────────────────────────── */
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100dvh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.6s ease-in-out;
+    }
+
+    .slide.active { opacity: 1; }
+
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(20, 16, 10, 0.30) 0%,
+        rgba(20, 16, 10, 0.20) 40%,
+        rgba(20, 16, 10, 0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: var(--white);
+    }
+
+    .hero-ornament {
+      font-size: 1.1rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1.4rem;
+      opacity: 0.9;
+    }
+
+    .hero-name {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.05;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-age {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold-light);
+      margin: 0 auto 2.4rem;
+      opacity: 0.7;
+    }
+
+    .hero-date {
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.85;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(250, 247, 242, 0.6);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 36px;
+      background: rgba(250, 247, 242, 0.4);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 0.4; }
+      50% { transform: scaleY(0.4); opacity: 0.9; }
+    }
+
+    /* Slide dots */
+    .dots {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 10;
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(250, 247, 242, 0.35);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active { background: var(--gold-light); }
+
+    /* ── SECTION PRINCIPALE ──────────────────────────────────────── */
+
+    .main {
+      background-color: var(--stone);
+      padding: 7rem 1.5rem 5rem;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .main-title {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .main-title em { font-style: italic; }
+
+    .ornament-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      color: var(--gold);
+    }
+
+    .ornament-line::before,
+    .ornament-line::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: var(--stone-dark);
+    }
+
+    .ornament-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .main-text {
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-light);
+      margin-bottom: 1.8rem;
+    }
+
+    .main-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── CAGNOTTE BLOCK ──────────────────────────────────────────── */
+
+    .cagnotte-block {
+      background: var(--white);
+      border: 1px solid var(--stone-dark);
+      padding: 3rem 2.5rem;
+      max-width: 560px;
+      margin: 4rem auto 0;
+      text-align: center;
+    }
+
+    .cagnotte-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .cagnotte-title {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 0.8rem;
+    }
+
+    .cagnotte-text {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .btn-cagnotte {
+      display: inline-block;
+      padding: 0.9rem 2.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      text-decoration: none;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-cagnotte:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── LIEU ────────────────────────────────────────────────────── */
+
+    .lieu {
+      padding: 2rem 1.5rem 4rem;
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .lieu-title {
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+
+    .lieu-title em { font-style: italic; }
+
+    .lieu-text {
+      font-size: clamp(1rem, 1.6vw, 1.12rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+
+    footer {
+      background: var(--text);
+      color: var(--stone-dark);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      font-weight: 300;
+    }
+
+    footer span {
+      color: var(--gold);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────── */
+
+    @media (max-width: 600px) {
+      .main { padding: 5rem 1.2rem 3rem; }
+      .cagnotte-block { padding: 2.2rem 1.5rem; }
+      .ornament-line::before,
+      .ornament-line::after { width: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO SLIDESHOW ── -->
+  <section class="hero" id="hero">
+
+    <div class="slide" style="background-image: url('IMG_3252.jpeg')"></div>
+    <div class="slide" style="background-image: url('IMG_5101.jpeg')"></div>
+    <div class="slide" style="background-image: url('IMG_0908.jpeg')"></div>
+    <div class="slide" style="background-image: url('IMG_0914.jpeg')"></div>
+    <div class="slide" style="background-image: url('IMG_4968.jpeg')"></div>
+    <div class="slide" style="background-image: url('IMG_5010.jpeg')"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-name">
+        <em>80 ans</em> de<br>Jean Fabre de Morlhon
+      </h1>
+      <p class="hero-ornament">12 août 2026 &mdash; Villefranche-de-Panat</p>
+    </div>
+
+    <div class="scroll-hint">Découvrir</div>
+
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- ── CONTENU PRINCIPAL ── -->
+  <main>
+    <section class="main">
+      <p class="section-label">Une occasion exceptionnelle</p>
+      <h2 class="main-title">
+        Célébrons ensemble<br><em>ses 80 printemps</em>
+      </h2>
+
+      <div class="ornament-line">
+        <div class="ornament-diamond"></div>
+      </div>
+
+      <p class="main-text">
+        Le <strong>12 août 2026</strong>, la famille se retrouve en Aveyron pour fêter
+        comme il se doit les <strong>80 ans de Jean Fabre de Morlhon</strong>.
+        Une occasion rare de se réunir tous ensemble dans ce cadre qui lui est si cher,
+        au cœur des collines et des causses aveyronnais.
+      </p>
+
+      <p class="main-text">
+        Pour marquer cet anniversaire d'une façon à la hauteur de l'événement,
+        nous avons ouvert une <strong>cagnotte cadeau commune</strong>.
+        Chacun peut y contribuer selon ses souhaits, quel que soit son lieu de résidence.
+      </p>
+
+      <!-- CAGNOTTE -->
+      <div class="cagnotte-block">
+        <p class="cagnotte-label">Cagnotte collective</p>
+        <h3 class="cagnotte-title">Offrir un cadeau à Jean</h3>
+        <p class="cagnotte-text">
+          Participez à la cagnotte en ligne pour lui offrir,
+          à travers vos contributions réunies, un cadeau à la mesure
+          de ce bel anniversaire.
+        </p>
+        <a class="btn-cagnotte" href="https://www.leetchi.com/fr/c/80-ans-de-jean-1594489" target="_blank" rel="noopener">
+          Participer à la cagnotte
+        </a>
+      </div>
+    </section>
+
+    <!-- ── LIEU ── -->
+    <section class="lieu">
+      <div class="ornament-line"><div class="ornament-diamond"></div></div>
+      <h2 class="lieu-title"><em>Villefranche-de-Panat</em>, Aveyron</h2>
+      <p class="lieu-text">
+        Depuis plus de deux siècles, la famille Fabre de Morlhon est enracinée
+        dans ce coin de l'Aveyron. Chaque été, les deux maisons familiales
+        ouvrent leurs portes et accueillent les générations réunies
+        pour quelques semaines de retrouvailles.
+        C'est dans ce lieu de mémoire et de joie que Jean fêtera ses 80 ans,
+        entouré des siens venus des quatre coins du monde.
+      </p>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p><a href="mailto:80ans-jean@morlhon.net" style="color: var(--gold-light); text-decoration: none; letter-spacing: 0.12em;">80ans-jean@morlhon.net</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      const slides = document.querySelectorAll('.slide');
+      const dotsContainer = document.getElementById('dots');
+      let current = 0;
+      let timer;
+
+      // Build dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      });
+
+      const dots = document.querySelectorAll('.dot');
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo(current + 1); }
+
+      // Preload images then start
+      let loaded = 0;
+      slides.forEach(s => {
+        const url = s.style.backgroundImage.replace(/url\(['"]?|['"]?\)/g, '');
+        const img = new Image();
+        img.onload = img.onerror = () => {
+          loaded++;
+          if (loaded === slides.length) startSlideshow();
+        };
+        img.src = url;
+      });
+
+      function startSlideshow() {
+        slides[0].classList.add('active');
+        timer = setInterval(next, 5000);
+      }
+
+      // Pause on hover
+      const hero = document.getElementById('hero');
+      hero.addEventListener('mouseenter', () => clearInterval(timer));
+      hero.addEventListener('mouseleave', () => { timer = setInterval(next, 5000); });
+
+      // Click to advance
+      hero.style.cursor = 'pointer';
+      hero.addEventListener('click', () => {
+        clearInterval(timer);
+        next();
+        timer = setInterval(next, 5000);
+      });
+    })();
+  </script>
+</body>
+</html>
