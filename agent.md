@@ -35,7 +35,6 @@ La famille Fabre de Morlhon est enracinée en Aveyron depuis 1634 (près de quat
 - **Palette** : tons pierre et nature ; beige lin (`#f0e9dc`), taupe, or discret (`#b8966e`), fond crème
 - **Ponctuation** : ne jamais utiliser le tiret `—` (fait "généré par IA") ; utiliser `;` ou reformuler
 - **Tirets interdits** : cette règle est absolue, même dans les listes et titres
-- **Vocabulaire** : dire "collecte" et non "cagnotte" (trop familier)
 - Pas d'emojis, pas de fioritures
 
 ## Structure de la page
