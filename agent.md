@@ -4,7 +4,7 @@
 
 Site web statique (`index.html`) servant de landing page pour une collecte cadeau à l'occasion des **80 ans de Jean Fabre de Morlhon**, célébrés le **12 août 2026** à **Villefranche-de-Panat, Aveyron**.
 
-La famille Fabre de Morlhon est enracinée en Aveyron depuis plus de 200 ans. Le rassemblement a lieu chaque été dans deux maisons familiales rénovées pouvant accueillir 20+ personnes.
+La famille Fabre de Morlhon est enracinée en Aveyron depuis plus d'1 siècle. Le rassemblement a lieu chaque été dans deux maisons familiales rénovées pouvant accueillir 20+ personnes.
 
 ## Fichiers du projet
 
@@ -49,4 +49,3 @@ La famille Fabre de Morlhon est enracinée en Aveyron depuis plus de 200 ans. Le
 - La participation à la collecte est **entièrement facultative** — ce qui compte avant tout c'est la présence des gens
 - Le site est **public** : rester sobre, ne pas mentionner de détails privés
 - Toujours pousser sur GitHub après modifications : `git add <fichiers> && git commit -m "..." && git push`
-- Ne pas inclure de co-auteur Claude dans les commits (préférence explicite de l'utilisateur)
